@@ -17,7 +17,10 @@ const weatherForecast = ({forecast}) => {
             type: 'spline'
         },
         title: {
-            text: 'Every 3h temperature'
+            text: 'Every 3h temperature',
+            style: {
+                color: '#808080'
+            },
         },
         xAxis: {
             categories: categories
@@ -30,7 +33,12 @@ const weatherForecast = ({forecast}) => {
         series: [{
             name: 'Temperature',
             data: temp
-        }]
+        }],
+        plotOptions: {
+            series: {
+                color: '#808080'
+            }
+        },
     };
 
     return (
