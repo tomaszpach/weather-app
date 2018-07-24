@@ -1,0 +1,52 @@
+body {
+    //margin: 0;
+    padding: 20px;
+    font-family: sans-serif;
+    background-color: #efefef;
+}
+
+// Todo move this to separate file
+// Search-form
+.search-form {
+    margin-bottom: 30px;
+
+    input {
+        margin-bottom: 10px;
+    }
+
+    button {
+        width: 100%;
+    }
+}
+
+// CurrentWeather
+
+.current-weather {
+    outline: 2px solid red;
+
+    .name {
+        font-size: 38px;
+        line-height: 1;
+    }
+
+    .description {
+        font-size: 16px;
+
+        &:first-letter {
+            text-transform: capitalize
+        }
+    }
+    .icon-temperature {
+        display: flex;
+        align-items: center;
+
+        img {
+            height: 100px;
+        }
+
+        .temperature {
+            font-size: 30px;
+            font-weight: bold;
+        }
+    }
+}
