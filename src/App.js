@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 
-import Loader from './components/loader/loader';
-import CurrentWeather from './components/currentWeather/currentWeather';
-import SearchBar from './components/searchBar';
-import WeatherForecast from './components/weatherForecast';
 import './styles/main.css';
 
-// This probably can be a simple function
+import Loader from './components/loader/loader';
+import SearchBar from './components/searchBar';
+import CurrentWeather from './components/currentWeather/currentWeather';
+import WeatherForecast from './components/weatherForecast';
+import CityNotFound from './components/cityNotFound';
+
 class App extends Component {
     constructor(props) {
         super(props);
@@ -52,9 +53,10 @@ class App extends Component {
             <div id="app">
                 <SearchBar onSubmit={(event) => this.handleSubmit(event)}
                            onInput={(event) => this.updateSearchInputValue(event)} value={this.state.value}/>
-                {this.state.loading ? <Loader/> : <CurrentWeather weather={this.state.weather}/>}
+                {this.state.loading ? <Loader/> : this.state.weather.cod === '404' ?
+                     <CityNotFound city={this.state.value}/> : <CurrentWeather weather={this.state.weather}/>}
 
-                <WeatherForecast />
+                <WeatherForecast/>
             </div>
         )
     }
