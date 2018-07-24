@@ -1,9 +1,16 @@
 header {
     display: flex;
     align-items: center;
-    height: 80px;
+    min-height: 80px;
+    margin-bottom: 15px;
 
-    span {
-        color: #fbc13f;
+    .title {
+        font-size: 45px;
+        color: #808080;
+    }
+
+    .logo {
+        font-size: 80px;
+        margin-right: 20px;
     }
 }

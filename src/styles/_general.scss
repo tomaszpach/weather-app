@@ -2,25 +2,53 @@ body {
     padding: 20px;
     font-family: sans-serif;
     background-color: #efefef;
+    color: #808080;
     min-height: 100vh;
 }
 
 // Todo move this to separate file
 // Search-form
 .search-form {
+    display: flex;
+    flex-direction: column;
     margin-bottom: 30px;
 
-    input {
+    label {
+        flex: 6;
         margin-bottom: 10px;
     }
 
-    button {
-        width: 100%;
+    .control {
+        flex: 1;
+
+        button.is-link {
+            width: 100%;
+            background-color: #808080;
+            transition: background-color 250ms;
+
+            &:hover {
+                background-color: #717171;
+            }
+        }
+    }
+}
+
+@media (min-width: 576px) {
+    .search-form {
+        flex-direction: row;
+
+        label {
+            margin-bottom: 0;
+            margin-right: 10px;
+        }
     }
 }
 
 // CurrentWeather
 
+.current-weather, .average-pressure, .forecast-weather {
+    margin-bottom: 15px;
+}
 .current-weather {
     .name {
         font-size: 38px;
