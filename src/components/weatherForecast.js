@@ -5,6 +5,7 @@ const weatherForecast = ({forecast}) => {
     let categories = [],
         temp = [];
 
+    // todo chart data below should be shorter
     if (forecast && forecast.list) {
         forecast.list.map(item => {
             temp.push(item.main.temp);
