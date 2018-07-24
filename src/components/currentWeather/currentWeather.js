@@ -5,7 +5,7 @@ const currentWeather = ({weather}) => {
     let weatherDetails;
 
     if (weather && weather.main) {
-        weatherDetails = <WeatherDetails name={weather.name} main={weather.main} weather={weather.weather[0]}/>;
+        weatherDetails = <WeatherDetails name={weather.name} main={weather.main} weather={weather.weather[0]} wind={weather.wind}/>;
     }
 
     return (

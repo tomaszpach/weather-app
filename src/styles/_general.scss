@@ -1,8 +1,8 @@
 body {
-    //margin: 0;
     padding: 20px;
     font-family: sans-serif;
     background-color: #efefef;
+    min-height: 100vh;
 }
 
 // Todo move this to separate file
@@ -22,8 +22,6 @@ body {
 // CurrentWeather
 
 .current-weather {
-    outline: 2px solid red;
-
     .name {
         font-size: 38px;
         line-height: 1;
@@ -36,17 +34,34 @@ body {
             text-transform: capitalize
         }
     }
-    .icon-temperature {
+    .details {
         display: flex;
-        align-items: center;
 
-        img {
-            height: 100px;
+        .icon-temperature {
+            display: flex;
+            align-items: center;
+
+            img {
+                height: 100px;
+            }
+
+            .temperature {
+                font-size: 30px;
+                font-weight: bold;
+            }
         }
 
-        .temperature {
-            font-size: 30px;
-            font-weight: bold;
+        .humidity-pressure, .wind, .wind-direction {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            margin-left: 30px;
+        }
+
+        .wind-direction {
+            i {
+                font-size: 50px;
+            }
         }
     }
 }

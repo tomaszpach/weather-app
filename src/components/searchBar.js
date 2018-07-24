@@ -15,7 +15,7 @@ const SearchBar = ({onSubmit, onInput, value}) => (
                 </div>
             </label>
             <div className="control">
-                <button className="button is-link">Submit</button>
+                <button className="button is-link">Check weather</button>
             </div>
         </form>
     )

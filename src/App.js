@@ -14,13 +14,14 @@ class App extends Component {
         this.state = {
             value: '',
             weather: {},
+            forecast: {},
             loading: false,
 
             appid: '74ab00f9f5d6f488185edff7e764b725'
         }
     }
 
-    fetchData(city = 'London') {
+    fetchWeather(city = 'London') {
         this.setState({
             loading: true
         });
@@ -28,13 +29,26 @@ class App extends Component {
             .then(response => response.json())
             .then(data => this.setState({
                 weather: data,
+                city,
+                loading: false
+            }));
+    }
+
+    fetchForecast(city = 'London') {
+        this.setState({
+            loading: true
+        });
+        fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${this.state.appid}`)
+            .then(response => response.json())
+            .then(data => this.setState({
+                forecast: data,
                 loading: false
             }, () => console.log('this.state.weather', this.state.weather)));
     }
 
     handleSubmit(event) {
-        // alert(this.state.value);
-        this.fetchData(this.state.value);
+        this.fetchWeather(this.state.value || 'London');
+        this.fetchForecast(this.state.value || 'London');
         event.preventDefault();
     }
 
@@ -45,8 +59,11 @@ class App extends Component {
     }
 
     componentDidMount() {
-        this.fetchData();
+        this.fetchWeather();
+        this.fetchForecast()
     }
+
+    // Todo check loader. how it works and display
 
     render() {
         return (
@@ -54,9 +71,12 @@ class App extends Component {
                 <SearchBar onSubmit={(event) => this.handleSubmit(event)}
                            onInput={(event) => this.updateSearchInputValue(event)} value={this.state.value}/>
                 {this.state.loading ? <Loader/> : this.state.weather.cod === '404' ?
-                     <CityNotFound city={this.state.value}/> : <CurrentWeather weather={this.state.weather}/>}
-
-                <WeatherForecast/>
+                    <CityNotFound city={this.state.city}/> : (
+                        <div>
+                            <CurrentWeather weather={this.state.weather}/>
+                            <WeatherForecast forecast={this.state.forecast}/>
+                        </div>
+                    )}
             </div>
         )
     }
