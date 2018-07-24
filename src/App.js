@@ -3,15 +3,18 @@ import React, {Component} from 'react';
 import './styles/main.css';
 
 import Loader from './components/loader/loader';
+import Header from './components/header/header';
 import SearchBar from './components/searchBar';
 import CurrentWeather from './components/currentWeather/currentWeather';
 import WeatherForecast from './components/weatherForecast';
+import AveragePressure from './components/averagePressure';
 import CityNotFound from './components/cityNotFound';
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            brandName: ['Mount', 'Weather'],
             value: '',
             weather: {},
             forecast: {},
@@ -31,7 +34,7 @@ class App extends Component {
                 weather: data,
                 city,
                 loading: false
-            }));
+            }, () => console.log('this.state.weather', this.state.weather)));
     }
 
     fetchForecast(city = 'London') {
@@ -43,7 +46,7 @@ class App extends Component {
             .then(data => this.setState({
                 forecast: data,
                 loading: false
-            }, () => console.log('this.state.weather', this.state.weather)));
+            }, () => console.log('this.state.forecast', this.state.forecast)));
     }
 
     handleSubmit(event) {
@@ -68,12 +71,14 @@ class App extends Component {
     render() {
         return (
             <div id="app">
+                <Header brandName={this.state.brandName}/>
                 <SearchBar onSubmit={(event) => this.handleSubmit(event)}
                            onInput={(event) => this.updateSearchInputValue(event)} value={this.state.value}/>
                 {this.state.loading ? <Loader/> : this.state.weather.cod === '404' ?
                     <CityNotFound city={this.state.city}/> : (
                         <div>
                             <CurrentWeather weather={this.state.weather}/>
+                            <AveragePressure forecast={this.state.forecast}/>
                             <WeatherForecast forecast={this.state.forecast}/>
                         </div>
                     )}
