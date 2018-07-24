@@ -64,6 +64,7 @@ body {
     }
     .details {
         display: flex;
+        flex-direction: column;
 
         .icon-temperature {
             display: flex;
@@ -83,12 +84,25 @@ body {
             display: flex;
             justify-content: center;
             flex-direction: column;
-            margin-left: 30px;
+            margin-left: 0;
         }
 
         .wind-direction {
             i {
                 font-size: 50px;
+                width: 40px;
+            }
+        }
+    }
+}
+
+@media (min-width: 576px) {
+    .current-weather {
+        .details {
+            flex-direction: row;
+
+            .humidity-pressure, .wind, .wind-direction {
+                margin-left: 30px;
             }
         }
     }
