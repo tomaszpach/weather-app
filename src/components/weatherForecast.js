@@ -31,11 +31,15 @@ class WeatherForecast extends Component {
         let categories = [],
             temp = [];
 
-        // todo chart data below should be shorter
         if (this.state.forecast && this.state.forecast.hasOwnProperty('list')) {
             this.state.forecast.list.map(item => {
+                let splitDt_txt = (item.dt_txt).split(' '),
+                    year = splitDt_txt[0].split('2018-'),
+                    hour = splitDt_txt[1].split(':');
+
                 temp.push(item.main.temp);
-                return categories.push(item.dt_txt);
+                categories.push(year[1] + ', ' + hour[0] + 'h');
+                return true;
             });
         }
 
