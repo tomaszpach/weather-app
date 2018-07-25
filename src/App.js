@@ -10,9 +10,6 @@ import WeatherForecast from './components/weatherForecast';
 import AveragePressure from './components/averagePressure';
 import CityNotFound from './components/cityNotFound';
 
-
-// todo check favicon
-// todo check app title
 class App extends Component {
     constructor(props) {
         super(props);
