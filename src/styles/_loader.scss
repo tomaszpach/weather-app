@@ -1,14 +1,13 @@
-.wrapper {
-    width: 100%;
+.loader-wrapper {
     display: flex;
-    align-items: center;
+    min-height: 50vh;
     justify-content: center;
-    min-height: 100px;
+    align-items: center;
 }
 
 .spinner {
-    width: 40px;
-    height: 40px;
+    width: 120px;
+    height: 120px;
     position: relative;
     text-align: center;
 
@@ -22,7 +21,7 @@
     display: inline-block;
     position: absolute;
     top: 0;
-    background-color: #fbc13f;
+    background-color: #808080;
     border-radius: 100%;
 
     -webkit-animation: sk-bounce 2.0s infinite ease-in-out;

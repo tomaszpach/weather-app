@@ -70,15 +70,13 @@ class App extends Component {
         this.fetchForecast()
     }
 
-    // Todo check loader. how it works and display
-
     render() {
         return (
             <div id="app">
                 <Header brandName={this.state.brandName}/>
                 <SearchBar onSubmit={(event) => this.handleSubmit(event)}
                            onInput={(event) => this.updateSearchInputValue(event)} value={this.state.value}/>
-                {this.state.loading ? <Loader/> : this.state.weather.cod === '404' ?
+                {this.state.loading ? <div className="loader-wrapper"><Loader/> </div> : this.state.weather.cod === '404' ?
                     <CityNotFound city={this.state.city}/> : (
                         <div>
                             <CurrentWeather weather={this.state.weather}/>
