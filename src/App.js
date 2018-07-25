@@ -21,7 +21,7 @@ class App extends Component {
             value: '',
             weather: {},
             forecast: {},
-            loading: false,
+            loading: true,
 
             appid: '74ab00f9f5d6f488185edff7e764b725'
         }
@@ -36,8 +36,8 @@ class App extends Component {
             .then(data => this.setState({
                 weather: data,
                 city,
-                loading: false
-            }, () => console.log('this.state.weather', this.state.weather)));
+            }, () => console.log('this.state.weather', this.state.weather)))
+            .finally(() => this.setState({loading: false}));
     }
 
     fetchForecast(city = 'London') {
@@ -48,8 +48,9 @@ class App extends Component {
             .then(response => response.json())
             .then(data => this.setState({
                 forecast: data,
-                loading: false
-            }, () => console.log('this.state.forecast', this.state.forecast)));
+                city,
+            }, () => console.log('this.state.forecast', this.state.forecast)))
+            .finally(() => this.setState({loading: false}));
     }
 
     handleSubmit(event) {

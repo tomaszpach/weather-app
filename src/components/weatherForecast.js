@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactHighcharts from 'react-highcharts';
 
+
 const weatherForecast = ({forecast}) => {
     let categories = [],
         temp = [];
 
     // todo chart data below should be shorter
-    if (forecast && forecast.list) {
+    if (forecast && forecast.hasOwnProperty('list')) {
         forecast.list.map(item => {
             temp.push(item.main.temp);
             return categories.push(item.dt_txt);

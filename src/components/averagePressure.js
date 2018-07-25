@@ -5,7 +5,7 @@ const averagePressure = ({forecast}) => {
         summary = 0,
         averagePressure = 0;
 
-    if (forecast && forecast.list) {
+    if (forecast && forecast.hasOwnProperty('list')) {
         forecast.list.map(item => {
             pressureList.push(item.main.pressure);
         });
