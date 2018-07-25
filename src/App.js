@@ -73,14 +73,15 @@ class App extends Component {
                 <Header brandName={this.state.brandName}/>
                 <SearchBar onSubmit={(event) => this.handleSubmit(event)}
                            onInput={(event) => this.updateSearchInputValue(event)} value={this.state.value}/>
-                {this.state.loading ? <div className="loader-wrapper"><Loader/> </div> : this.state.weather.cod === '404' ?
-                    <CityNotFound city={this.state.city}/> : (
-                        <div>
-                            <CurrentWeather weather={this.state.weather}/>
-                            <AveragePressure forecast={this.state.forecast}/>
-                            <WeatherForecast forecast={this.state.forecast}/>
-                        </div>
-                    )}
+                {this.state.loading ?
+                    <div className="loader-wrapper"><Loader/></div> : this.state.weather.cod === '404' ?
+                        <CityNotFound city={this.state.city}/> : (
+                            <div>
+                                <CurrentWeather weather={this.state.weather}/>
+                                <AveragePressure forecast={this.state.forecast}/>
+                                <WeatherForecast forecast={this.state.forecast}/>
+                            </div>
+                        )}
             </div>
         )
     }
