@@ -11,7 +11,7 @@ class WeatherForecast extends Component {
     }
 
     shouldComponentUpdate(nextProps) {
-        if (nextProps.forecast.city.id && !(this.state.forecast.hasOwnProperty('city'))) {
+        if (nextProps.forecast.city && !(this.state.forecast.hasOwnProperty('city'))) {
             this.setState({
                 forecast: nextProps.forecast
             });
@@ -21,6 +21,11 @@ class WeatherForecast extends Component {
         return false;
     }
 
+    componentWillUnmount() {
+        this.setState({
+            forecast: {}
+        });
+    }
 
     render() {
         let categories = [],
