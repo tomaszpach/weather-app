@@ -1,5 +1,7 @@
 ## Setup guide
-Go to main directory and follow steps listed below:
+1. Clone or download Repository.
+2. Go to main directory and open console / terminal
+3. Follow steps listed below:
 
 ### Yarn
 
