@@ -36,7 +36,7 @@ class App extends Component {
             .then(data => this.setState({
                 weather: data,
                 city,
-            }, () => console.log('this.state.weather', this.state.weather)))
+            }))
             .finally(() => this.setState({loading: false}));
     }
 
@@ -49,7 +49,7 @@ class App extends Component {
             .then(data => this.setState({
                 forecast: data,
                 city,
-            }, () => console.log('this.state.forecast', this.state.forecast)))
+            }))
             .finally(() => this.setState({loading: false}));
     }
 
