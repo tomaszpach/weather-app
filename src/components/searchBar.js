@@ -1,7 +1,7 @@
 import React from 'react';
 
 const SearchBar = ({onSubmit, onInput, value}) => (
-        <form className="search-form" onSubmit={(event) => onSubmit(event)}>
+        <form id="search-form" onSubmit={(event) => onSubmit(event)}>
             <label>
                 <div className="field">
                     <p className="control has-icons-left">

@@ -1,8 +1,10 @@
 import React from 'react';
 
-// Todo make it pretty
 const cityNotFound = ({city}) => (
-    <div>{city} not found</div>
+    <div id="not-found">
+        <h2><b>{city}</b>, not found.</h2>
+        <p>Please try other city or check if you do not have a typo.</p>
+    </div>
 );
 
 export default cityNotFound;

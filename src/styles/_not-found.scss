@@ -1,0 +1,9 @@
+#not-found {
+    h2 {
+        font-size: 38px;
+
+        &:first-letter {
+            text-transform: capitalize;
+        }
+    }
+}

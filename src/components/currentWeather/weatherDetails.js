@@ -29,6 +29,7 @@ const weatherDetails = ({name, main, weather, wind}) => {
                 </div>
             </div>
 
+            // todo remove unused parts
             {/*<div>*/}
             {/*<div>temp_max: {main.temp_max} &#8451;</div>*/}
             {/*<div>temp_min: {main.temp_min} &#8451;</div>*/}

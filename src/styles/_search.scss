@@ -1,4 +1,4 @@
-.search-form {
+#search-form {
     display: flex;
     flex-direction: column;
     margin-bottom: 30px;
@@ -6,6 +6,12 @@
     label {
         flex: 6;
         margin-bottom: 10px;
+
+        input {
+            &:first-letter {
+                text-transform: capitalize;
+            }
+        }
     }
 
     .control {
@@ -24,7 +30,7 @@
 }
 
 @media (min-width: 576px) {
-    .search-form {
+    #search-form {
         flex-direction: row;
 
         label {
