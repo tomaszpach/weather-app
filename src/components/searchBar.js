@@ -1,13 +1,13 @@
 import React from 'react';
 
 const SearchBar = ({onSubmit, onInput, value}) => (
-        <form id="search-form" onSubmit={(event) => onSubmit(event)}>
+        <form id="search-form" onSubmit={(e) => onSubmit(e)}>
             <label>
                 <div className="field">
                     <p className="control has-icons-left">
-                        <input onInput={(event) => onInput(event)}
+                        <input onInput={(e) => onInput(e)}
                                value={value} type="search"
-                               className="input" placeholder="London"/>
+                               className="input" placeholder="Kraków"/>
                         <span className="icon is-small is-left">
                                 <i className="fas fa-map-marker-alt"/>
                             </span>
@@ -15,7 +15,7 @@ const SearchBar = ({onSubmit, onInput, value}) => (
                 </div>
             </label>
             <div className="control">
-                <button className="button is-link">Check weather</button>
+                <button className="btn btn-primary">Check weather</button>
             </div>
         </form>
     )

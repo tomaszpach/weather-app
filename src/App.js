@@ -11,68 +11,55 @@ import AveragePressure from './components/averagePressure';
 import CityNotFound from './components/cityNotFound';
 
 class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            brandName: ['Mount', 'Weather'],
-            value: '',
-            weather: {},
-            forecast: {},
-            loading: true,
+    state = {
+        brandName: ['Mount', 'Weather'],
+        value: '',
+        weather: {},
+        forecast: {},
+        loading: true,
 
-            appid: '74ab00f9f5d6f488185edff7e764b725'
-        }
-    }
+        appid: '74ab00f9f5d6f488185edff7e764b725'
+    };
 
-    fetchWeather(city = 'London') {
+    fetchWeather(city = this.state.value, weatherForecast) {
+        let dataFor = weatherForecast === 'weather' ? 'weather' : 'forecast';
+
         this.setState({
             loading: true
         });
-        fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${this.state.appid}`)
+
+        fetch(`http://api.openweathermap.org/data/2.5/${weatherForecast}?q=${city}&units=metric&appid=${this.state.appid}`)
             .then(response => response.json())
             .then(data => this.setState({
-                weather: data,
+                [dataFor]: data,
                 city,
             }))
             .finally(() => this.setState({loading: false}));
     }
 
-    fetchForecast(city = 'London') {
-        this.setState({
-            loading: true
-        });
-        fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${this.state.appid}`)
-            .then(response => response.json())
-            .then(data => this.setState({
-                forecast: data,
-                city,
-            }))
-            .finally(() => this.setState({loading: false}));
+    handleSubmit(e) {
+        e.preventDefault();
+        this.fetchWeather(this.state.value, 'weather');
+        this.fetchWeather(this.state.value, 'forecast');
     }
 
-    handleSubmit(event) {
-        this.fetchWeather(this.state.value || 'London');
-        this.fetchForecast(this.state.value || 'London');
-        event.preventDefault();
-    }
-
-    updateSearchInputValue(event) {
+    updateSearchInputValue(e) {
         this.setState({
-            value: event.target.value
+            value: e.target.value
         });
     }
 
     componentDidMount() {
-        this.fetchWeather();
-        this.fetchForecast()
+        this.fetchWeather('Kraków', 'weather');
+        this.fetchWeather('Kraków', 'forecast');
     }
 
     render() {
         return (
             <div id="app">
-                <Header brandName={this.state.brandName}/>
-                <SearchBar onSubmit={(event) => this.handleSubmit(event)}
-                           onInput={(event) => this.updateSearchInputValue(event)} value={this.state.value}/>
+                {/*<Header brandName={this.state.brandName}/>*/}
+                <SearchBar onSubmit={(e) => this.handleSubmit(e)}
+                           onInput={(e) => this.updateSearchInputValue(e)} value={this.state.value}/>
                 {this.state.loading ?
                     <div className="loader-wrapper"><Loader/></div> : this.state.weather.cod === '404' ?
                         <CityNotFound city={this.state.city}/> : (
