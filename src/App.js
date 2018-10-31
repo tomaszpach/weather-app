@@ -15,9 +15,7 @@ import CityNotFound from './components/cityNotFound';
 
 class App extends Component {
     state = {
-        value: '',
-        loading: false,
-        weather: {cod: 200}
+        value: ''
     };
     // handleSubmit(e) {
     //     e.preventDefault();
