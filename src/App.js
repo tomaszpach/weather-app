@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 import './styles/main.css';
 
-import FetchWeater from './containers/fetchWeather';
+import FetchWeather from './containers/fetchWeather';
 
 import Loader from './components/loader/loader';
 // import Header from './components/header/header';
@@ -41,7 +41,7 @@ class App extends Component {
     render() {
         return (
             <div id="app">
-                <FetchWeater/>
+                <FetchWeather/>
                 {/*<Header brandName={this.state.brandName}/>*/}
                 {/*<SearchBar onSubmit={(e) => this.handleSubmit(e)}*/}
                 {/*onInput={(e) => this.updateSearchInputValue(e)} value={this.state.value}/>*/}
