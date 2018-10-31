@@ -2,23 +2,10 @@ import {Component} from 'react'
 import { connect } from 'react-redux';
 
 class FetchWeather extends Component {
-    state = {
-        value: 'Krakow',
-        weather: {},
-        forecast: {},
-        loading: true,
-
-        appid: '74ab00f9f5d6f488185edff7e764b725'
-    };
-
-    fetchWeather(city = this.state.value, weatherForecast) {
+    fetchWeather(city = this.props.searchInput, weatherForecast) {
         let dataFor = weatherForecast === 'weather' ? 'weather' : 'forecast';
 
-        this.setState({
-            loading: true
-        });
-
-        fetch(`http://api.openweathermap.org/data/2.5/${weatherForecast}?q=${city}&units=metric&appid=${this.state.appid}`)
+        fetch(`http://api.openweathermap.org/data/2.5/${weatherForecast}?q=${city}&units=metric&appid=${this.props.appid}`)
             .then(response => response.json())
             .then(data => this.setState({
                 [dataFor]: data
@@ -33,8 +20,17 @@ class FetchWeather extends Component {
     }
 
     componentDidMount() {
-        this.fetchWeather('Krakow', 'weather');
-        this.fetchWeather('Krakow', 'forecast');
+        if (this.props.location !== '') {
+            this.fetchWeather(this.props.location, 'weather');
+            this.fetchWeather(this.props.location, 'forecast');
+        }
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.location !== this.props.location) {
+            this.fetchWeather(this.props.location, 'weather');
+            this.fetchWeather(this.props.location, 'forecast');
+        }
     }
 
     render() {
@@ -44,8 +40,8 @@ class FetchWeather extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        // weather: state.weather,
-        // forecast: state.forecast
+        location: state.location,
+        appid: state.appid
     }
 };
 

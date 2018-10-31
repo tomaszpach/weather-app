@@ -6,7 +6,6 @@ import './styles/main.css';
 import FetchWeather from './containers/fetchWeather';
 
 import Loader from './components/loader/loader';
-// import Header from './components/header/header';
 import SearchBar from './components/searchBar';
 import CurrentWeather from './components/currentWeather/currentWeather';
 import WeatherForecast from './components/weatherForecast';
@@ -14,48 +13,39 @@ import AveragePressure from './components/averagePressure';
 import CityNotFound from './components/cityNotFound';
 
 class App extends Component {
-    state = {
-        value: ''
-    };
-    // handleSubmit(e) {
-    //     e.preventDefault();
-    //     this.fetchWeather(this.state.value, 'weather');
-    //     this.fetchWeather(this.state.value, 'forecast');
-    // }
+    handleSubmit(e) {
+        e.preventDefault();
+        if (this.props.searchInput !== this.props.location) {
+            this.props.updateLoader(true);
+            this.props.updateWeather(this.props.searchInput);
+        }
+    }
 
-    // updateSearchInputValue(e) {
-    //     this.setState({
-    //         value: e.target.value
-    //     });
-    // }
-
-    componentDidMount() {
-        // this.fetchWeather('Kraków', 'weather');
-        // this.fetchWeather('Kraków', 'forecast');
-        // this.props.doSomething({name: 'test', date: '02.05.20180', id: 6});
-        // console.log(this.props.posts)
+    updateSearchInputValue(e) {
+        this.props.updateSearchInput(e.target.value);
     }
 
     render() {
         return (
             <div id="app">
                 <FetchWeather/>
-                {/*<Header brandName={this.state.brandName}/>*/}
-                {/*<SearchBar onSubmit={(e) => this.handleSubmit(e)}*/}
-                {/*onInput={(e) => this.updateSearchInputValue(e)} value={this.state.value}/>*/}
-                <SearchBar value={this.state.value}/>
-                {this.props.loading ? (
+                <SearchBar onInput={(e) => this.updateSearchInputValue(e)} onSubmit={(e) => this.handleSubmit(e)}
+                           value={this.props.searchInput}/>
+                {Object.keys(this.props.weather).length === 0 ? (
+                    <div>Wpisz miasto dla ktorego chcesz sprawdzic pogode</div>
+                ) : this.props.loading ? (
                     <div className="loader-wrapper">
                         <Loader/>
                     </div>
-                ) : this.props.weather.length >= 0 && this.props.weather[0].cod === '404' ?
-                    <CityNotFound city={this.state.city}/> : (
-                        <div>
-                            <CurrentWeather weather={this.props.weather[0]}/>
-                            <AveragePressure forecast={this.props.forecast[0]}/>
-                            <WeatherForecast forecast={this.props.forecast[0]}/>
-                        </div>
-                    )}
+                ) : this.props.weather[0].cod === 404 || this.props.weather[0].cod === 400 ? (
+                    <CityNotFound city={this.props.location}/>
+                ) : (
+                    <div>
+                        <CurrentWeather weather={this.props.weather[0]}/>
+                        <AveragePressure forecast={this.props.forecast[0]}/>
+                        <WeatherForecast forecast={this.props.forecast[0]}/>
+                    </div>
+                )}
             </div>
         )
     }
@@ -65,7 +55,9 @@ const mapStateToProps = (state) => {
     return {
         loading: state.loading,
         weather: state.weather,
-        forecast: state.forecast
+        forecast: state.forecast,
+        searchInput: state.searchInput,
+        location: state.location
     }
 };
 
@@ -73,6 +65,15 @@ const mapDispatchToProps = (dispatch) => {
     return {
         fetchWeather: (weather) => {
             dispatch({type: 'FETCH_WEATHER', weather: weather})
+        },
+        updateSearchInput: (inputText) => {
+            dispatch({type: 'UPDATE_SEARCH_INPUT', searchInput: inputText})
+        },
+        updateWeather: (location) => {
+            dispatch({type: 'UPDATE_WEATHER', location: location})
+        },
+        updateLoader: (loading) => {
+            dispatch({type: 'UPDATE_LOADER', loading: loading})
         }
     }
 };

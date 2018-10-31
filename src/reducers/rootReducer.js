@@ -1,12 +1,13 @@
 const initState = {
     weather: {},
     forecast: {},
+    searchInput: '',
+    location: 'Krakow',
+    appid: '74ab00f9f5d6f488185edff7e764b725',
     loading: true
 };
 
 const rootReducer = (state = initState, action) => {
-    console.log(state);
-    // console.log('action', action);
     switch (action.type) {
         case 'FETCH_WEATHER':
             return {
@@ -20,6 +21,24 @@ const rootReducer = (state = initState, action) => {
                 ...state,
                 forecast: [action.forecast],
                 loading: false
+            };
+
+        case 'UPDATE_SEARCH_INPUT':
+            return {
+                ...state,
+                searchInput: action.searchInput
+            };
+
+        case 'UPDATE_WEATHER':
+            return {
+                ...state,
+                loading: true,
+                location: action.location
+            };
+        case 'UPDATE_LOADER':
+            return {
+                ...state,
+                loading: action.loading
             };
 
         default:
