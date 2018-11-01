@@ -1,9 +1,11 @@
 import React from 'react';
 
 const loader = () => (
-    <div className="spinner">
-        <div className="dot1"/>
-        <div className="dot2"/>
+    <div className="loader-wrapper">
+        <div className="spinner">
+            <div className="dot1"/>
+            <div className="dot2"/>
+        </div>
     </div>
 );
 

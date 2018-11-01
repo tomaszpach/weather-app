@@ -1,10 +1,16 @@
 import React, {Component} from 'react';
 import ReactHighcharts from 'react-highcharts';
 
-class WeatherForecast extends Component {
+class ForecastWeather extends Component {
     state = {
         config: null
     };
+
+
+    componentDidMount() {
+        this.updateHighChartConfig();
+    }
+
 
     componentDidUpdate(prevProps) {
         if (Object.keys(this.props.forecast).length !== 0) {
@@ -22,17 +28,15 @@ class WeatherForecast extends Component {
 
         const {forecast} = this.props;
 
-        if (forecast && forecast.hasOwnProperty('list')) {
-            forecast.list.map(item => {
-                let splitDt_txt = (item.dt_txt).split(' '),
-                    year = splitDt_txt[0].split('2018-'),
-                    hour = splitDt_txt[1].split(':');
+        forecast.list.map(item => {
+            let splitDt_txt = (item.dt_txt).split(' '),
+                year = splitDt_txt[0].split('2018-'),
+                hour = splitDt_txt[1].split(':');
 
-                temp.push(item.main.temp);
-                categories.push(year[1] + ', ' + hour[0] + 'h');
-                return true;
-            });
-        }
+            temp.push(item.main.temp);
+            categories.push(year[1] + ', ' + hour[0] + 'h');
+            return true;
+        });
 
         let config = {
             chart: {
@@ -73,10 +77,12 @@ class WeatherForecast extends Component {
             <div className="forecast-weather">
                 {this.state.config !== null ? (
                     <ReactHighcharts config={this.state.config}/>
-                ) : (<div>brak configu</div>)}
+                ) : (
+                    <div>brak configu</div>
+                )}
             </div>
         )
     }
 }
 
-export default WeatherForecast;
+export default ForecastWeather;

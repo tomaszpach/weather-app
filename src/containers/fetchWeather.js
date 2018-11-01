@@ -1,25 +1,39 @@
 import {Component} from 'react'
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 
 class FetchWeather extends Component {
-    fetchWeather(city = this.props.searchInput, weatherForecast) {
-        let dataFor = weatherForecast === 'weather' ? 'weather' : 'forecast';
+    state = {
+        daily: []
+    };
+
+    fetchWeather(city = this.props.location, weatherForecast) {
+        // let dataFor = weatherForecast === 'weather' ? 'weather' : 'forecast';
 
         fetch(`http://api.openweathermap.org/data/2.5/${weatherForecast}?q=${city}&units=metric&appid=${this.props.appid}`)
             .then(response => response.json())
-            .then(data => this.setState({
-                [dataFor]: data
-            }, () => {
-                if (dataFor === 'weather') {
-                    this.props.fetchWeather(data);
-                } else {
-                    this.props.fetchForecast(data);
+            .then(data => {
+                switch (weatherForecast) {
+                    case 'weather':
+                        this.props.fetchWeather(data);
+                        return;
+
+                    case 'forecast':
+                        this.props.fetchForecast(data);
+                        return;
                 }
-            }))
+            })
+            .finally(() => this.setState({loading: false}));
+    }
+
+    fetchWeatherDaily(city = this.props.location, weatherForecast = 'forecast') {
+        fetch(`http://api.openweathermap.org/data/2.5/forecast/daily?q=${city}&units=metric&appid=${this.props.appid}&cnt=7`)
+            .then(response => response.json())
+            .then(data => this.props.fetchDailyForecast(data))
             .finally(() => this.setState({loading: false}));
     }
 
     componentDidMount() {
+        this.fetchWeatherDaily();
         if (this.props.location !== '') {
             this.fetchWeather(this.props.location, 'weather');
             this.fetchWeather(this.props.location, 'forecast');
@@ -30,6 +44,7 @@ class FetchWeather extends Component {
         if (prevProps.location !== this.props.location) {
             this.fetchWeather(this.props.location, 'weather');
             this.fetchWeather(this.props.location, 'forecast');
+            this.fetchWeatherDaily();
         }
     }
 
@@ -47,8 +62,15 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchWeather: (weather) => { dispatch({ type: 'FETCH_WEATHER', weather: weather }) },
-        fetchForecast: (forecast) => { dispatch({ type: 'FETCH_FORECAST', forecast: forecast }) }
+        fetchWeather: (weather) => {
+            dispatch({type: 'FETCH_WEATHER', weather: weather})
+        },
+        fetchForecast: (forecast) => {
+            dispatch({type: 'FETCH_FORECAST', forecast: forecast})
+        },
+        fetchDailyForecast: (dailyForecast) => {
+            dispatch({type: 'FETCH_DAILY_FORECAST', dailyForecast: dailyForecast})
+        }
     }
 };
 

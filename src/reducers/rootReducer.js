@@ -1,6 +1,7 @@
 const initState = {
-    weather: {},
+    weather: [],
     forecast: {},
+    dailyForecast: undefined,
     searchInput: '',
     location: 'Krakow',
     appid: '74ab00f9f5d6f488185edff7e764b725',
@@ -23,6 +24,12 @@ const rootReducer = (state = initState, action) => {
                 loading: false
             };
 
+        case 'FETCH_DAILY_FORECAST':
+            return {
+                ...state,
+                dailyForecast: action.dailyForecast
+            };
+
         case 'UPDATE_SEARCH_INPUT':
             return {
                 ...state,
@@ -32,7 +39,6 @@ const rootReducer = (state = initState, action) => {
         case 'UPDATE_WEATHER':
             return {
                 ...state,
-                loading: true,
                 location: action.location
             };
         case 'UPDATE_LOADER':
