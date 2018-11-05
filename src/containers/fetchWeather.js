@@ -15,6 +15,10 @@ class FetchWeather extends Component {
                     case 'forecast':
                         this.props.fetchForecast(data);
                         return;
+
+                    default:
+                        this.props.fetchWeather(data);
+                        return;
                 }
             })
             .finally(() => this.setState({loading: false}));
