@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Loader from '../loader/loader';
 import OneDay from './OneDay';
 
 const DailyForecast = ({dailyForecast}) => {
@@ -10,9 +11,7 @@ const DailyForecast = ({dailyForecast}) => {
         })
     }
 
-    return (
-        days !== undefined ? days : <div>loading daily weather</div>
-    )
+    return days !== undefined ? days : <Loader />
 };
 
 export default DailyForecast;
