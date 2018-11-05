@@ -21,8 +21,8 @@ const weatherDetails = ({name, main, weather, wind}) => {
                 </div>
 
                 <div className="wind">
-                    <div>Wind: {wind.speed} km/h</div>
-                    {wind.gust ? <div>Gust: {wind.gust} km/h</div> : null}
+                    <div>Wind: {wind.speed} m/s</div>
+                    {wind.gust ? <div>Gust: {wind.gust} m/s</div> : null}
                 </div>
                 <div className="wind-direction">
                     <i className="fas fa-arrow-up" style={arrowStyle}/>
