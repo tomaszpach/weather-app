@@ -2,13 +2,8 @@ import {Component} from 'react'
 import {connect} from 'react-redux';
 
 class FetchWeather extends Component {
-    state = {
-        daily: []
-    };
 
     fetchWeather(city = this.props.location, weatherForecast) {
-        // let dataFor = weatherForecast === 'weather' ? 'weather' : 'forecast';
-
         fetch(`http://api.openweathermap.org/data/2.5/${weatherForecast}?q=${city}&units=metric&appid=${this.props.appid}`)
             .then(response => response.json())
             .then(data => {
@@ -25,7 +20,7 @@ class FetchWeather extends Component {
             .finally(() => this.setState({loading: false}));
     }
 
-    fetchWeatherDaily(city = this.props.location, weatherForecast = 'forecast') {
+    fetchWeatherDaily(city = this.props.location) {
         fetch(`http://api.openweathermap.org/data/2.5/forecast/daily?q=${city}&units=metric&appid=${this.props.appid}&cnt=7`)
             .then(response => response.json())
             .then(data => this.props.fetchDailyForecast(data))

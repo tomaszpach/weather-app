@@ -43,23 +43,6 @@ class App extends Component {
                 <DailyForecast dailyForecast={this.props.dailyForecast} />
                 <CurrentWeather weather={this.props.weather} />
                 <ForecastWeather forecast={this.props.forecast} />
-
-
-                {/*{Object.keys(this.props.weather).length === 0 ? (*/}
-                    {/*<div>Wpisz miasto dla ktorego chcesz sprawdzic pogode</div>*/}
-                {/*) : this.props.loading ? (*/}
-                    {/*<div className="loader-wrapper">*/}
-                        {/*<Loader/>*/}
-                    {/*</div>*/}
-                {/*) : this.props.weather[0].cod === 404 || this.props.weather[0].cod === 400 ? (*/}
-                    {/*<CityNotFound city={this.props.location}/>*/}
-                {/*) : (*/}
-                    {/*<div>*/}
-                        {/*<CurrentWeather weather={this.props.weather[0]}/>*/}
-                        {/*<AveragePressure forecast={this.props.forecast[0]}/>*/}
-                        {/*<WeatherForecast forecast={this.props.forecast[0]}/>*/}
-                    {/*</div>*/}
-                {/*)}*/}
             </div>
         )
     }
