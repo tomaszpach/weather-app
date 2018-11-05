@@ -28,9 +28,9 @@ class App extends Component {
                 <SearchBar onInput={(e) => this.updateSearchInputValue(e)} onSubmit={(e) => this.handleSubmit(e)}
                            value={this.props.searchInput}/>
 
-                <DailyForecast dailyForecast={this.props.dailyForecast} />
-                <CurrentWeather weather={this.props.weather} />
-                <ForecastWeather forecast={this.props.forecast} />
+                <DailyForecast dailyForecast={this.props.dailyForecast}/>
+                <CurrentWeather weather={this.props.weather}/>
+                <ForecastWeather forecast={this.props.forecast}/>
             </div>
         )
     }
@@ -50,9 +50,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchWeather: (weather) => {
-            dispatch({type: 'FETCH_WEATHER', weather: weather})
-        },
         updateSearchInput: (inputText) => {
             dispatch({type: 'UPDATE_SEARCH_INPUT', searchInput: inputText})
         },
