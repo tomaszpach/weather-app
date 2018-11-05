@@ -43,7 +43,8 @@ const mapStateToProps = (state) => {
         forecast: state.forecast,
         searchInput: state.searchInput,
         location: state.location,
-        dailyForecast: state.dailyForecast
+        dailyForecast: state.dailyForecast,
+        cityFound: state.cityFound
     }
 };
 

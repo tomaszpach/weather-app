@@ -14,6 +14,7 @@ const rootReducer = (state = initState, action) => {
             return {
                 ...state,
                 weather: [action.weather],
+                cityFound: action.weather.cod !== 404,
                 loading: false
             };
 
