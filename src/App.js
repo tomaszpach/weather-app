@@ -1,23 +1,12 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
-import './styles/main.css';
-
 import FetchWeather from './containers/fetchWeather';
 
-
 import SearchBar from './components/searchBar';
-// import CurrentWeather from './components/currentWeather/CurrentWeather';
 import ForecastWeather from './components/forecastWeather/ForecastWeatherWrapper';
-// import AveragePressure from './components/forecastWeather/AveragePressure';
-// import CityNotFound from './components/cityNotFound';
-
 import DailyForecast from './components/dailyForecast/DailyForecast';
-
-
 import CurrentWeather from './components/currentWeather/CurrentWeatherWrapper';
-
-
 
 class App extends Component {
     handleSubmit(e) {
@@ -33,7 +22,6 @@ class App extends Component {
     }
 
     render() {
-        // console.log(this.props.forecast);
         return (
             <div id="app">
                 <FetchWeather/>
