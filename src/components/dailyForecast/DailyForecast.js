@@ -9,9 +9,11 @@ const DailyForecast = ({dailyForecast}) => {
         days = dailyForecast.list.map((item, index) => {
             return <OneDay dayData={item} day={index} key={index}/>
         })
+    } else {
+        days = <Loader/>
     }
 
-    return days !== undefined ? days : <Loader />
+    return days
 };
 
 export default DailyForecast;
