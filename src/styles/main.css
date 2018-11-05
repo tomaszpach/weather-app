@@ -5,6 +5,13 @@ body {
   color: #808080;
   min-height: 100vh; }
 
+#weather-app .tile-wrapper {
+  padding: 5px; }
+  #weather-app .tile-wrapper:nth-of-type(3n+3) {
+    padding-right: 0; }
+  #weather-app .tile-wrapper:nth-of-type(3n+1) {
+    padding-left: 0; }
+
 .loader-wrapper {
   display: flex;
   min-height: 50vh;
