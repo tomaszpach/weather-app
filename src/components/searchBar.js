@@ -6,7 +6,7 @@ const SearchBar = ({onSubmit, onInput, value}) => (
                 <div className="field">
                     <p className="control has-icons-left">
                         <input onInput={(e) => onInput(e)}
-                               value={value} type="search"
+                               defaultValue={value} type="search"
                                className="input" placeholder="Kraków"/>
                         <span className="icon is-small is-left">
                                 <i className="fas fa-map-marker-alt"/>
