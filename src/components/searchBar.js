@@ -10,7 +10,7 @@ const SearchBar = ({onSubmit, onInput, value}) => (
                 </div>
             </label>
             <div className="control">
-                <button className="btn btn-primary">Check weather</button>
+                <button className="btn btn-primary">Sprawdź pogodę</button>
             </div>
         </form>
     )
