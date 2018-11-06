@@ -27,6 +27,7 @@ class OneDay extends React.Component {
                         </div>
                         <div className="pull-right">
                             <canvas id="rain" width="32" height="32"></canvas>
+                            {/* todo nie wyswietlaj nic jezeli wilgotnosc 0% (dni 5+) */}
                             <span className="text-white small-text-description">Wilgotność: {dayData.humidity}%</span></div>
                         <div className="clearfix"></div>
                     </div>
