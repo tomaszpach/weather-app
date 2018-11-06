@@ -3,7 +3,7 @@ const initState = {
     forecast: {},
     dailyForecast: undefined,
     searchInput: '',
-    location: 'Krakow',
+    location: 'Ochmanów',
     appid: '74ab00f9f5d6f488185edff7e764b725',
     loading: true
 };

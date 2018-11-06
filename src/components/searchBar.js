@@ -20,7 +20,7 @@ class SearchBar extends React.Component {
                 <label>
                     <div className="input-group">
                         <span className="input-group-addon" id="basic-addon1"><i className="fas fa-map-marker-alt"/></span>
-                        <input type="search" className="form-control" placeholder="Kraków" aria-describedby="basic-addon1"
+                        <input type="search" className="form-control" placeholder="Ochmanów" aria-describedby="basic-addon1"
                                onInput={(e) => this.updateSearchInputValue(e)} defaultValue={this.props.searchInput}/>
                     </div>
                 </label>
