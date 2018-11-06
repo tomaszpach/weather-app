@@ -1,75 +1,85 @@
 .current-weather, .average-pressure, .forecast-weather {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
+
 .current-weather {
-    .name {
-        font-size: 38px;
-        line-height: 1;
+  .name {
+    font-size: 38px;
+    line-height: 1;
+  }
+
+  .description {
+    font-size: 16px;
+
+    &:first-letter {
+      text-transform: capitalize
+    }
+  }
+  .details {
+    display: flex;
+    flex-direction: column;
+
+    .icon-temperature {
+      display: flex;
+      align-items: center;
+
+      img {
+        height: 100px;
+      }
+
+      .temperature {
+        font-size: 30px;
+        font-weight: bold;
+      }
     }
 
-    .description {
-        font-size: 16px;
-
-        &:first-letter {
-            text-transform: capitalize
-        }
+    .humidity-pressure, .wind, .wind-direction {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      margin-left: 0;
     }
-    .details {
-        display: flex;
-        flex-direction: column;
 
-        .icon-temperature {
-            display: flex;
-            align-items: center;
-
-            img {
-                height: 100px;
-            }
-
-            .temperature {
-                font-size: 30px;
-                font-weight: bold;
-            }
-        }
-
-        .humidity-pressure, .wind, .wind-direction {
-            display: flex;
-            justify-content: center;
-            flex-direction: column;
-            margin-left: 0;
-        }
-
-        .wind-direction {
-            i {
-                font-size: 50px;
-                width: 40px;
-            }
-        }
+    .wind-direction {
+      i {
+        font-size: 50px;
+        width: 40px;
+      }
     }
+  }
 }
 
 // FORECAST
 .forecast-wrapper {
-    .tile-wrapper {
-        padding: 5px;
+  .tile-wrapper {
+    padding: 0;
+    margin-bottom: 10px;
+  }
+}
 
-        &:nth-of-type(3n+3) {
-            padding-right: 0;
-        }
-        &:nth-of-type(3n+1) {
-            padding-left: 0;
-        }
+@media (min-width: 768px) {
+  .forecast-wrapper {
+    .tile-wrapper {
+      padding: 5px;
+
+      &:nth-of-type(3n+3) {
+        padding-right: 0;
+      }
+      &:nth-of-type(3n+1) {
+        padding-left: 0;
+      }
     }
+  }
 }
 
 @media (min-width: 576px) {
-    .current-weather {
-        .details {
-            flex-direction: row;
+  .current-weather {
+    .details {
+      flex-direction: row;
 
-            .humidity-pressure, .wind, .wind-direction {
-                margin-left: 30px;
-            }
-        }
+      .humidity-pressure, .wind, .wind-direction {
+        margin-left: 30px;
+      }
     }
+  }
 }
