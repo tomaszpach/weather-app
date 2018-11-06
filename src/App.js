@@ -9,24 +9,11 @@ import DailyForecast from './components/dailyForecast/DailyForecast';
 import CurrentWeatherWrapper from './components/currentWeather/CurrentWeatherWrapper';
 
 class App extends Component {
-    handleSubmit(e) {
-        e.preventDefault();
-        if (this.props.searchInput !== this.props.location) {
-            this.props.updateLoader(true);
-            this.props.updateWeather(this.props.searchInput);
-        }
-    }
-
-    updateSearchInputValue(e) {
-        this.props.updateSearchInput(e.target.value);
-    }
-
     render() {
         return (
             <div id="app">
                 <FetchWeather/>
-                <SearchBar onInput={(e) => this.updateSearchInputValue(e)} onSubmit={(e) => this.handleSubmit(e)}
-                           value={this.props.searchInput}/>
+                <SearchBar />
 
                 <CurrentWeatherWrapper weather={this.props.weather}/>
                 <DailyForecast dailyForecast={this.props.dailyForecast}/>
@@ -41,25 +28,9 @@ const mapStateToProps = (state) => {
         loading: state.loading,
         weather: state.weather,
         forecast: state.forecast,
-        searchInput: state.searchInput,
-        location: state.location,
         dailyForecast: state.dailyForecast,
         cityFound: state.cityFound
     }
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        updateSearchInput: (inputText) => {
-            dispatch({type: 'UPDATE_SEARCH_INPUT', searchInput: inputText})
-        },
-        updateWeather: (location) => {
-            dispatch({type: 'UPDATE_WEATHER', location: location})
-        },
-        updateLoader: (loading) => {
-            dispatch({type: 'UPDATE_LOADER', loading: loading})
-        }
-    }
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps)(App);
