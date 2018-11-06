@@ -13,7 +13,12 @@ const DailyForecast = ({dailyForecast}) => {
         days = <Loader/>
     }
 
-    return days
+    return (
+        <div className="forecast-wrapper">
+            {days}
+            <div className="clearfix" />
+        </div>
+    )
 };
 
 export default DailyForecast;

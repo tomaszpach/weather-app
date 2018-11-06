@@ -6,7 +6,9 @@ body {
     min-height: 100vh;
 }
 
-#weather-app {
+// todo move this styles to separate file!
+
+.forecast-wrapper {
     .tile-wrapper {
         padding: 5px;
 
