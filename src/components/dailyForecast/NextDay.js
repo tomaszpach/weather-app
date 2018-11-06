@@ -9,7 +9,7 @@ const NextDay = ({day}) => {
     } else if (day === 2) {
         nextDayText = 'Pojutrze'
     } else {
-        nextDayText = `Za ${day + 1} dni`
+        nextDayText = `Za ${day} dni`
     }
 
     return (
