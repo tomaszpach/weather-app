@@ -5,13 +5,6 @@ body {
   color: #808080;
   min-height: 100vh; }
 
-.forecast-wrapper .tile-wrapper {
-  padding: 5px; }
-  .forecast-wrapper .tile-wrapper:nth-of-type(3n+3) {
-    padding-right: 0; }
-  .forecast-wrapper .tile-wrapper:nth-of-type(3n+1) {
-    padding-left: 0; }
-
 .loader-wrapper {
   display: flex;
   min-height: 50vh;
@@ -85,12 +78,9 @@ header {
       text-transform: capitalize; }
   #search-form .control {
     flex: 1; }
-    #search-form .control button.is-link {
+    #search-form .control button {
       width: 100%;
-      background-color: #808080;
       transition: background-color 250ms; }
-      #search-form .control button.is-link:hover {
-        background-color: #717171; }
 
 @media (min-width: 576px) {
   #search-form {
@@ -127,6 +117,13 @@ header {
   .current-weather .details .wind-direction i {
     font-size: 50px;
     width: 40px; }
+
+.forecast-wrapper .tile-wrapper {
+  padding: 5px; }
+  .forecast-wrapper .tile-wrapper:nth-of-type(3n+3) {
+    padding-right: 0; }
+  .forecast-wrapper .tile-wrapper:nth-of-type(3n+1) {
+    padding-left: 0; }
 
 @media (min-width: 576px) {
   .current-weather .details {

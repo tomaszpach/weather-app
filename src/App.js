@@ -4,9 +4,9 @@ import {connect} from 'react-redux';
 import FetchWeather from './containers/fetchWeather';
 
 import SearchBar from './components/searchBar';
-import ForecastWeather from './components/forecastWeather/ForecastWeatherWrapper';
+// import ForecastWeather from './components/forecastWeather/ForecastWeatherWrapper';
 import DailyForecast from './components/dailyForecast/DailyForecast';
-import CurrentWeather from './components/currentWeather/CurrentWeatherWrapper';
+import CurrentWeatherWrapper from './components/currentWeather/CurrentWeatherWrapper';
 
 class App extends Component {
     handleSubmit(e) {
@@ -28,7 +28,7 @@ class App extends Component {
                 <SearchBar onInput={(e) => this.updateSearchInputValue(e)} onSubmit={(e) => this.handleSubmit(e)}
                            value={this.props.searchInput}/>
 
-                <CurrentWeather weather={this.props.weather}/>
+                <CurrentWeatherWrapper weather={this.props.weather}/>
                 <DailyForecast dailyForecast={this.props.dailyForecast}/>
                 {/*<ForecastWeather forecast={this.props.forecast}/>*/}
             </div>

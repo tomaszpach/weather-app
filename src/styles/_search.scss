@@ -17,14 +17,10 @@
     .control {
         flex: 1;
 
-        button.is-link {
+        button {
             width: 100%;
-            background-color: #808080;
             transition: background-color 250ms;
 
-            &:hover {
-                background-color: #717171;
-            }
         }
     }
 }
