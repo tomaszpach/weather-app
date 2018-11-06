@@ -5,18 +5,3 @@ body {
     color: #808080;
     min-height: 100vh;
 }
-
-// todo move this styles to separate file!
-
-.forecast-wrapper {
-    .tile-wrapper {
-        padding: 5px;
-
-        &:nth-of-type(3n+3) {
-            padding-right: 0;
-        }
-        &:nth-of-type(3n+1) {
-            padding-left: 0;
-        }
-    }
-}
