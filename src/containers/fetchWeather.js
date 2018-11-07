@@ -2,7 +2,6 @@ import {Component} from 'react'
 import {connect} from 'react-redux';
 
 class FetchWeather extends Component {
-
     fetchWeather(city = this.props.location, weatherForecast) {
         fetch(`http://api.openweathermap.org/data/2.5/${weatherForecast}?q=${city}&units=metric&appid=${this.props.appid}`)
             .then(response => response.json())
@@ -30,7 +29,7 @@ class FetchWeather extends Component {
     }
 
     componentDidMount() {
-        this.fetchWeatherDaily();
+        this.fetchWeatherDaily(this.props.location);
         if (this.props.location !== '') {
             this.fetchWeather(this.props.location, 'weather');
             this.fetchWeather(this.props.location, 'forecast');
@@ -39,9 +38,9 @@ class FetchWeather extends Component {
 
     componentDidUpdate(prevProps) {
         if (prevProps.location !== this.props.location) {
+            this.fetchWeatherDaily(this.props.location);
             this.fetchWeather(this.props.location, 'weather');
             this.fetchWeather(this.props.location, 'forecast');
-            this.fetchWeatherDaily();
         }
     }
 
