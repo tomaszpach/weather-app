@@ -21,14 +21,12 @@ class FetchWeather extends Component {
                         return;
                 }
             })
-            .finally(() => this.setState({loading: false}));
     }
 
     fetchWeatherDaily(city = this.props.location) {
         fetch(`http://api.openweathermap.org/data/2.5/forecast/daily?q=${city}&units=metric&appid=${this.props.appid}&cnt=6`)
             .then(response => response.json())
             .then(data => this.props.fetchDailyForecast(data))
-            .finally(() => this.setState({loading: false}));
     }
 
     componentDidMount() {
