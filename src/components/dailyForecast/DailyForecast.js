@@ -10,7 +10,7 @@ const DailyForecast = ({dailyForecast}) => {
             return <OneDay dayData={item} day={index} key={index}/>
         })
     } else {
-        days = <Loader/>
+        days = null
     }
 
     return (
