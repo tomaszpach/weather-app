@@ -8,8 +8,7 @@ const currentWeatherWrapper = ({weather, location}) => {
         return <CurrentWeather weather={weather[0]}/>
     }
 
-    return <CityNotFound location={location} />
-
+    return <CityNotFound location={location}/>
 };
 
 export default currentWeatherWrapper;

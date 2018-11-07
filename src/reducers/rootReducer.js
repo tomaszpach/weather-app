@@ -31,9 +31,9 @@ const rootReducer = (state = initState, action) => {
                 dailyForecast: action.dailyForecast
             };
 
-            // todo check if this have to be like that. this makes to
-            // 're-render' components every time someone type something
-            // try to put this to state instead of reducer (update only on submit)
+        // todo check if this have to be like that. this makes to
+        // 're-render' components every time someone type something
+        // try to put this to state instead of reducer (update only on submit)
         case 'UPDATE_SEARCH_INPUT':
             return {
                 ...state,

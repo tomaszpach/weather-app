@@ -6,11 +6,9 @@ class ForecastWeather extends Component {
         config: null
     };
 
-
     componentDidMount() {
         this.updateHighChartConfig();
     }
-
 
     componentDidUpdate(prevProps) {
         if (Object.keys(this.props.forecast).length !== 0) {
@@ -23,10 +21,9 @@ class ForecastWeather extends Component {
     }
 
     updateHighChartConfig = () => {
+        const {forecast} = this.props;
         let categories = [],
             temp = [];
-
-        const {forecast} = this.props;
 
         forecast.list.map(item => {
             let splitDt_txt = (item.dt_txt).split(' '),

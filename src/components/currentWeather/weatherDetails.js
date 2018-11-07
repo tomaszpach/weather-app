@@ -13,9 +13,10 @@ const weatherDetails = ({name, main, weather, wind}) => {
                             <div className="heading">
                                 <div className="pull-left">{name}</div>
                                 <img src={iconUrl} alt="sky is clear"
-                                     className="pull-right" />
+                                     className="pull-right"/>
                                 <div className="pull-right">{(main.temp).toFixed()}°C</div>
-                                <div className="clearfix"></div></div>
+                                <div className="clearfix"></div>
+                            </div>
                         </div>
                         <div className="tile-footer">
                             <div className="pull-left">
@@ -32,7 +33,7 @@ const weatherDetails = ({name, main, weather, wind}) => {
                 </div>
             </div>
         </div>
-)
+    )
 };
 
 export default weatherDetails;

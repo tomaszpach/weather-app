@@ -5,7 +5,7 @@ import BrandName from './brandName'
 const header = ({brandName}) => (
     <header>
         <Logo/>
-        <BrandName brandName={brandName} />
+        <BrandName brandName={brandName}/>
     </header>
 );
 

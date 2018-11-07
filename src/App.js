@@ -13,9 +13,9 @@ class App extends Component {
         return (
             <div id="app">
                 <FetchWeather/>
-                <SearchBar />
+                <SearchBar/>
 
-                {this.props.loading ? <Loader /> :
+                {this.props.loading ? <Loader/> :
                     (
                         <div>
                             <CurrentWeatherWrapper weather={this.props.weather} location={this.props.location}/>
