@@ -1,10 +1,12 @@
 import React from 'react';
 
-const cityNotFound = ({city}) => (
-    <div id="not-found">
-        <h2><b>{city}</b>, not found.</h2>
-        <p>Please try other city or check if you do not have a typo.</p>
-    </div>
-);
+const cityNotFound = ({location}) => {
+    return (
+        <div id="not-found">
+            <h2>Nie znalazłem pogody dla <b>{location}</b>.</h2>
+            <p>Spróbuj wpisać inną lokalizację, lub sprawdź czy nie masz literówki w nazwie.</p>
+        </div>
+    )
+};
 
 export default cityNotFound;

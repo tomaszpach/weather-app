@@ -1,14 +1,14 @@
 import React from 'react';
 
-import Loader from '../loader/loader';
+import CityNotFound from '../cityNotFound';
 import CurrentWeather from './CurrentWeather';
 
-const currentWeatherWrapper = ({weather}) => {
+const currentWeatherWrapper = ({weather, location}) => {
     if (weather.length > 0 && weather[0].hasOwnProperty('weather')) {
         return <CurrentWeather weather={weather[0]}/>
     }
 
-    return <Loader/>
+    return <CityNotFound location={location} />
 
 };
 

@@ -3,10 +3,10 @@ import {connect} from 'react-redux';
 
 import FetchWeather from './containers/fetchWeather';
 
+import Loader from './components/loader/loader';
 import SearchBar from './components/searchBar';
-// import ForecastWeather from './components/forecastWeather/ForecastWeatherWrapper';
-import DailyForecast from './components/dailyForecast/DailyForecast';
 import CurrentWeatherWrapper from './components/currentWeather/CurrentWeatherWrapper';
+import DailyForecast from './components/dailyForecast/DailyForecast';
 
 class App extends Component {
     render() {
@@ -15,9 +15,14 @@ class App extends Component {
                 <FetchWeather/>
                 <SearchBar />
 
-                <CurrentWeatherWrapper weather={this.props.weather}/>
-                <DailyForecast dailyForecast={this.props.dailyForecast}/>
-                {/*<ForecastWeather forecast={this.props.forecast}/>*/}
+                {this.props.loading ? <Loader /> :
+                    (
+                        <div>
+                            <CurrentWeatherWrapper weather={this.props.weather} location={this.props.location}/>
+                            <DailyForecast dailyForecast={this.props.dailyForecast}/>
+                        </div>
+                    )
+                }
             </div>
         )
     }
@@ -27,9 +32,8 @@ const mapStateToProps = (state) => {
     return {
         loading: state.loading,
         weather: state.weather,
-        forecast: state.forecast,
         dailyForecast: state.dailyForecast,
-        cityFound: state.cityFound
+        location: state.location
     }
 };
 
