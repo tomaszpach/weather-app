@@ -12,6 +12,7 @@ class App extends Component {
     render() {
         return (
             <div id="app">
+                {/*<GeoLocation />*/}
                 <FetchWeather/>
                 <SearchBar/>
 
